@@ -1,3 +1,6 @@
+<?php
+    include 'conn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,7 +93,7 @@
                         </li>
                         <li class="account-item account-item-2">
                            <img src="assets/images/icon/message.svg" alt="">
-                            <h5><span>Mail Us Today</span>info@aliyazidi.co.ke</h5> 
+                            <h5><span>Mail Us Today</span>info@jafferyisland.co.ke</h5> 
                         </li>
                         <li class="account-item">
                              <img src="assets/images/icon/map.svg" alt="">
@@ -190,63 +193,37 @@
     <!-- .breadcumb-area end -->
     <div class="blog-page-area section-padding">
        <div class="container">
+        
            <div class="row">
                <div class="col-lg-12 col-md-12 col-12">
                    <div class="blog-left-bar">
-                       <div class="blog-item">
-                           <div class="blog-img">
-                               <div class="blog-s2">
-                                   <img src="assets/images/blog-page/4.jpg" alt="">
-                               </div>
-                                <ul class="post-meta">
-                                    <li><img src="assets/images/blog-page/6.jpg" alt=""></li>
-                                    <li><a href="#">By Aliza anne</a></li>
-                                    <li class="clr">  logisTics</li>
-                                    <li> Oct 12,2018</li>
-                                </ul>
-                           </div>
-                           <div class="blog-content-2">
-                               <h2>The modern world make life easier.</h2>
-                               <p>I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those what can do for you rationally encounter consequences that are extremely painful.</p>
-                               <a href="#">read more..</a>
-                           </div>
-                       </div>
-                       <div class="blog-item">
-                           <div class="blog-img">
-                               <div class="blog-s2">
-                                   <img src="assets/images/blog-page/2.jpg" alt="">
-                               </div>
-                                <ul class="post-meta">
-                                    <li><img src="assets/images/blog-page/6.jpg" alt=""></li>
-                                    <li><a href="#">By Aliza anne</a></li>
-                                    <li class="clr">  logisTics</li>
-                                    <li> Oct 12,2018</li>
-                                </ul>
-                           </div>
-                           <div class="blog-content-2">
-                               <h2>what can do for you</h2>
-                               <p>I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those what can do for you rationally encounter consequences that are extremely painful.</p>
-                               <a href="#">read more..</a>
-                           </div>
-                       </div>
-                       <div class="blog-item">
-                           <div class="blog-img">
-                               <div class="blog-s2">
-                                   <img src="assets/images/blog-page/3.jpg" alt="">
-                               </div>
-                                <ul class="post-meta">
-                                    <li><img src="assets/images/blog-page/6.jpg" alt=""></li>
-                                    <li><a href="#">By Aliza anne</a></li>
-                                    <li class="clr">  logisTics</li>
-                                    <li> Oct 12,2018</li>
-                                </ul>
-                           </div>
-                           <div class="blog-content-2">
-                               <h2>what can do for you</h2>
-                               <p>I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those what can do for you rationally encounter consequences that are extremely painful.</p>
-                               <a href="#">read more..</a>
-                           </div>
-                       </div>
+                <?php
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {             
+                        echo '<div class="blog-item">';
+                           echo'<div class="blog-img">';
+                               echo'<div class="blog-s2">';
+                                   echo "<img src='uploads/". $row["image"]." '>";
+                               echo'</div>';
+                                echo'<ul class="post-meta">';
+                                    
+                                    echo'<li class="clr">' . $row["category"] .'</li>';
+                                    echo'<li>' .$row["reg_date"].'</li>';
+                                echo'</ul>';
+                           echo'</div>';
+                           echo'<div class="blog-content-2">';
+                               echo'<h2>' .$row["title"].'</h2>';
+                               echo '<p>' .$row["description"]. '</p>';
+                               
+                           echo'</div>';
+                       echo'</div>';
+                    }
+                    } else {
+                    echo "No blog posts found.";
+                }
+                $conn->close();
+                ?>
+                       <!-- Blog End -->
                         <div class="row">
                             <div class="col-12">
                                 <div class="pagination-wrapper pagination-wrapper-2">
@@ -348,7 +325,7 @@
                             <h3>Contact Us</h3>
                             <ul>
                                 <li><a href="index.html"></i>Tel: +254741733734 | +256743694014</a></li><br>
-                                <li><a href="index.html">Email: info@aliyazidi.co.ke </a></li><br>
+                                <li><a href="index.html">Email: info@jafferyisland.co.ke</a></li><br>
                                 <li><a href="index.html">Location: 2544 Kilindini Mombasa, Kenya</a></li>
                             </ul>
                         </div>
