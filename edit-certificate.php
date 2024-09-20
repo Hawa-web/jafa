@@ -2,24 +2,11 @@
 
 include 'session.php';
 
-$servername = "localhost:3307";
-$username = "root";
-$password = "123456";
-$dbname = "admin_panel";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'conn.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
-    $category = $_POST['category'];
     $title = $_POST['title'];
-    $description = $_POST['description'];
     $image = $_FILES['image']['name'];
 
     if (!empty($image)) {
@@ -29,27 +16,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Move the uploaded file to the target directory
         if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
-            $sql = "UPDATE blogs SET category='$category', title='$title', description='$description', image='$image' WHERE id=$id";
+            $sql = "UPDATE certificates SET  title='$title', image='$image' WHERE id=$id";
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
     } else {
-        $sql = "UPDATE blogs SET category='$category', title='$title', description='$description' WHERE id=$id";
+        $sql = "UPDATE certificates SET, title='$title' WHERE id=$id";
     }
 
     if ($conn->query($sql) === TRUE) {
-        header("Location: edit-blog.php?status=success");
+        header("Location: edit-certificate.php?status=success");
         exit;
     } 
     else {
-        header("Location: edit-blog.php?status=fail");
+        header("Location: edit-certificate.php?status=fail");
         exit;  
     }
 }
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM blogs WHERE id=$id";
+    $sql = "SELECT * FROM certificates WHERE id=$id";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 }
@@ -129,7 +116,7 @@ $conn->close();
                     <ul>
                         <li class="menu-title">Main</li>
                         <li>
-                            <a href="index-2.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                            <a href="index-2.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                         </li>
 						
 						<li class="submenu">
@@ -189,7 +176,7 @@ $conn->close();
             <div class="col-md-12">
                         <div class="card-box">
                             <h4 class="card-title">Edit Blog</h4>
-                            <form action="edit-blog.php" method="POST" enctype="multipart/form-data">
+                            <form action="edit-certificate.php" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Blog ID</label>
                                     <input type="hidden" id="id" name="id" class="form-control" value="<?php echo $row['id']; ?>">
@@ -198,26 +185,11 @@ $conn->close();
                                     <label>Blog Title</label>
                                     <input type="text" id="title" name="title" class="form-control" value="<?php echo $row['title']; ?>">
                                 </div>
-                                <div class="form-group">
-                                    <label for="category">Blog Category:</label><br>
-                                    <select id="category" name="category" class="form-control" required>
-                                        <option value="Air Freight">Air Freight</option>
-                                        <option value="Domestic Transport">Domestic Transport</option>
-                                        <option value="Sea Freight">Sea Freight</option>
-                                        <option value="Ware Housing">Ware Housing</option>
-                                        <option value="NVOCC">NVOCC</option>
-                                        <option value="Custom Clearence">Custom Clearence</option>
-                                        <option value="Technology">Technology</option>
-                                    </select>
-                                </div>
+                                
+                                
                                 
                                 <div class="form-group">
-                                    <label for="description">Blog Details:</label>
-                                   
-                                    <textarea class="form-control" id="description" name="description" rows="5" required><?php echo $row['description']; ?></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="image">Blog Image:</label>
+                                    <label for="image">Certificate Image:</label>
                                     
                                     <br>
                                     <small>Current Image: <img src="uploads/<?php echo $row['image']; ?>" alt="<?php echo $row['title']; ?>" width="100"></small><br>
@@ -456,10 +428,10 @@ $conn->close();
             const status = urlParams.get('status');
 
             if (status === 'success') {
-                $('#modalMessage').text('Blog post Updated successfully.');
+                $('#modalMessage').text('Certificated Details Updated successfully.');
                 $('#messageModal').modal('show');
             } else if (status === 'fail') {
-                $('#modalMessage').text('Failed to Update the blog post. Please try again.');
+                $('#modalMessage').text('Failed to Update Certificate Details. Please try again.');
                 $('#messageModal').modal('show');
             }
 });

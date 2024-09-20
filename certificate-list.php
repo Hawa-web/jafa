@@ -11,7 +11,7 @@ include 'session.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <title>Admin Blog</title>
+    <title>Admin Panel</title>
     <link rel="stylesheet" type="text/css" href="assets-2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets-2/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets-2/css/fullcalendar.min.css">
@@ -32,9 +32,9 @@ include 'session.php';
 
 <body>
     <div class="main-wrapper">
-        <div class="header">
+    <div class="header">
 			<div class="header-left">
-				<a href="index-2.html" class="logo">
+				<a href="#" class="logo">
 					<img src="./assets/images/logo/big logo.png" width="35" height="35" alt=""> <span>Jaffery</span>
 				</a>
 			</div>
@@ -48,13 +48,12 @@ include 'session.php';
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                         <span class="user-img">
-							<span class="status online"></span></span>
+							<span class="status online"></span>
+                        </span>
                         <span>Admin</span>
                     </a>
 					<div class="dropdown-menu">
-						<!-- <a class="dropdown-item" href="profile.html">My Profile</a>
-						<a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-						<a class="dropdown-item" href="settings.html">Settings</a> -->
+						
 						<a class="dropdown-item" href="logout.php">Logout</a>
 					</div>
                 </li>
@@ -67,7 +66,7 @@ include 'session.php';
                     <ul>
                         <li class="menu-title">Main</li>
                         <li>
-                            <a href="index-2.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                            <a href="index.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                         </li>
 						
 						<li class="submenu">
@@ -82,9 +81,10 @@ include 'session.php';
 							<a href="#"><i class="fa fa-book"></i> <span> Certificates</span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
                                 <li><a href="add-certificate.php">Add Certificate</a></li>
-								<li><a href="certificate-list.php">Certificate List</a></li>						
+								<li><a href="certificate-list.php">Certificate List</a></li>		
 							</ul>
 						</li>
+						
                     </ul>
                 </div>
             </div>
@@ -95,47 +95,12 @@ include 'session.php';
                     <div class="col-sm-12">
                         <h4 class="page-title">Blog Form</h4>
                     </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">View Blogs</button>
+                    </div>
                 </div>
                 
-                    <div class="col-md-12">
-                        <div class="card-box">
-                            <h4 class="card-title">Basic Form</h4>
-                            <form action="add-blog-api.php" method="POST" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label>Blog Title</label>
-                                    <input type="text" id="title" name="title" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="category">Blog Category:</label><br>
-                                    <select id="category" name="category" class="form-control" required>
-                                        <option value="Air Freight">Air Freight</option>
-                                        <option value="Domestic Transport">Domestic Transport</option>
-                                        <option value="Sea Freight">Sea Freight</option>
-                                        <option value="Ware Housing">Ware Housing</option>
-                                        <option value="NVOCC">NVOCC</option>
-                                        <option value="Custom Clearence">Custom Clearence</option>
-                                        <option value="Technology">Technology</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="date">Blog Date</label>
-                                    <input class="form-control" type="date" id="date" name="date" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="description">Blog Details:</label>
-                                    <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="image">Blog Image</label>
-                                    <input class="form-control" type="file" id="image" name="image" accept="image/*" required>
-                                </div>
-                                <div class="text-right">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
+                    
                     <!-- Modal -->
                      <!-- Bootstrap Modal -->
                         <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
@@ -157,9 +122,51 @@ include 'session.php';
                             </div>
                         </div>
 
-                    
+                    <div class="col-lg-12">
+                        <div class="card-box">
+                            <div class="card-block">
+                                <h4 class="card-title">Current blogs</h4>
+								<div class="table-responsive">
+									<table class="table table-hover mb-0">
+										<thead>
+											<tr>
+												<th>ID</th>
+												
+												<th>Title</th>
+                                                <th>Certificate</th>
+                                                
+											</tr>
+										</thead>
+                                        <!-- Displaying different courses -->
+                                                <?php
+                                                    include 'conn.php';
+                                                    $sql = "SELECT id, title, image FROM certificates;";
+                                                    $result = $conn->query($sql);
+                                                    if ($result->num_rows > 0) {
+                                                        while($row = $result->fetch_assoc()) {
+                                                            echo "<tbody>";
+                                                            echo "<tr>";
+                                                            echo "<td>" . $row["id"] . "</td>";
+                                                            
+                                                            echo "<td>" . $row["title"] . "</td>";
+                                                            
+                                                            echo "<td><img src='uploads/" . $row["image"] . "' alt='" . $row["title"] . "' width='100'></td>";
+                                                            echo "<td class='action-buttons'><a href='edit-certificate.php?id=" . $row["id"] . "'>Edit</a></td>";
+                                                            echo "<td class='action-buttons'><a href='delete-certificate-api.php?id=" . $row["id"] . "'>Delete</a></td>";
+                                                            echo "</tr>";
+                                                        }
+                                                    } else {
+                                                        echo "<tr><td colspan='7'>No blog posts found.</td></tr>";
+                                                    }
+                                                    $conn->close();
+                                                ?>
+									</table>
+								</div>
+                            </div>
+                        </div>
+                    </div>
             </div>
-           
+            
         </div>
     </div>
     <div class="sidebar-overlay" data-reff=""></div>
@@ -170,6 +177,7 @@ include 'session.php';
     <script src="assets-2/js/select2.min.js"></script>
     <script src="assets-2/js/app.js"></script>
 
+
     <script>
         $(document).ready(function() {
             // Check if the URL contains a status parameter
@@ -177,10 +185,10 @@ include 'session.php';
             const status = urlParams.get('status');
 
             if (status === 'success') {
-                $('#modalMessage').text('Blog post submitted successfully.');
+                $('#modalMessage').text('Certificate  Deleted successfully.');
                 $('#messageModal').modal('show');
             } else if (status === 'fail') {
-                $('#modalMessage').text('Failed to submit the blog post. Please try again.');
+                $('#modalMessage').text('Failed to delete the Certificate. Please try again.');
                 $('#messageModal').modal('show');
             }
 });

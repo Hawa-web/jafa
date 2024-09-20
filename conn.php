@@ -15,7 +15,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, category, title, description, image, reg_date FROM blogs";
-$result = $conn->query($sql);
+
 
 ?>

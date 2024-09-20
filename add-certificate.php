@@ -82,7 +82,7 @@ include 'session.php';
 							<a href="#"><i class="fa fa-book"></i> <span> Certificates</span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
                                 <li><a href="add-certificate.php">Add Certificate</a></li>
-								<li><a href="certificate-list.php">Certificate List</a></li>						
+								<li><a href="certificate-list.php">Certificate List</a></li>		
 							</ul>
 						</li>
                     </ul>
@@ -93,37 +93,17 @@ include 'session.php';
             <div class="content">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="page-title">Blog Form</h4>
+                        <h4 class="page-title">Certificate Form</h4>
                     </div>
                 </div>
                 
                     <div class="col-md-12">
                         <div class="card-box">
-                            <h4 class="card-title">Basic Form</h4>
-                            <form action="add-blog-api.php" method="POST" enctype="multipart/form-data">
+                            <h4 class="card-title">Fill in the form</h4>
+                            <form action="add-certificate-api.php" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Blog Title</label>
                                     <input type="text" id="title" name="title" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="category">Blog Category:</label><br>
-                                    <select id="category" name="category" class="form-control" required>
-                                        <option value="Air Freight">Air Freight</option>
-                                        <option value="Domestic Transport">Domestic Transport</option>
-                                        <option value="Sea Freight">Sea Freight</option>
-                                        <option value="Ware Housing">Ware Housing</option>
-                                        <option value="NVOCC">NVOCC</option>
-                                        <option value="Custom Clearence">Custom Clearence</option>
-                                        <option value="Technology">Technology</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="date">Blog Date</label>
-                                    <input class="form-control" type="date" id="date" name="date" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="description">Blog Details:</label>
-                                    <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="image">Blog Image</label>
@@ -177,10 +157,10 @@ include 'session.php';
             const status = urlParams.get('status');
 
             if (status === 'success') {
-                $('#modalMessage').text('Blog post submitted successfully.');
+                $('#modalMessage').text('Certificate added successfully.');
                 $('#messageModal').modal('show');
             } else if (status === 'fail') {
-                $('#modalMessage').text('Failed to submit the blog post. Please try again.');
+                $('#modalMessage').text('Failed to add certificate. Please try again.');
                 $('#messageModal').modal('show');
             }
 });

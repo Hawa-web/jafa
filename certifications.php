@@ -1,3 +1,14 @@
+
+<?php
+
+include 'session.php';
+
+include 'conn.php';
+
+$sql = "SELECT id, title, image FROM certificates;";
+$result = $conn->query($sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -173,22 +184,21 @@
     </div>
     <!-- Certifications -->
      <section style="margin-top: 50px; margin-bottom: 50px;">
-        <div class="container">
-            <div><h2 style="text-align: center;">Business Permit</h2></div>
-            <img src="./assets/images/about/business permit.jpg" class="rounded mx-auto d-block" alt="...">
-        </div>
-        <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
-            <div><h2 style="text-align: center;">Certificate of incorpration</h2></div>
-            <img src="./assets/images/about/incorpration.jpg" class="rounded mx-auto d-block" alt="...">
-        </div>
-        <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
-            <div><h2 style="text-align: center;">Certificate of Registration</h2></div>
-            <img src="./assets/images/about/registration.jpg" class="rounded mx-auto d-block" alt="...">
-        </div>
-        <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
-            <div><h2 style="text-align: center;">Certificate of Clearence</h2></div>
-            <img src="./assets/images/about/association.jpg" class="rounded mx-auto d-block" alt="...">
-        </div>
+     <?php
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {             
+                        echo '<div class="container">';
+                        echo '<div>" . "<h2 style="text-align: center;">'.$row["title"]. '</h2></div>';
+                        echo "<img src='uploads/" . $row["image"] . "' class='rounded mx-auto d-block'>";
+                        echo '</div>';
+                        
+                    }
+                    } else {
+                    echo "No blog posts found.";
+                }
+                $conn->close();
+                ?>
+        
      </section>
     <section class="newsletter-section newsletter-section-2">
         <div class="container">
