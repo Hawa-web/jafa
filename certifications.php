@@ -1,7 +1,6 @@
 
 <?php
 
-include 'session.php';
 
 include 'conn.php';
 
@@ -66,20 +65,20 @@ $result = $conn->query($sql);
                 </div>
                 <div class="col-md-6 col-sm-12 col-12 col-lg-6">
                     <div class="row">
-                        <div class="col-lg-7 col-md-6">
+                         <div class="col-lg-7 col-md-6">
                             <ul class="d-flex header-social">
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=61566858144347"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.instagram.com/jafferyislandcoastlinks?igsh=MThuYWMxeWU0Z3g2aQ%3D%3D&utm_source=qr"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-5 col-md-6">
+                        <!-- <div class="col-lg-5 col-md-6">
                             <ul class="login-r">
                                 <li><a href="#">Login</a></li>
                                 <li><a href="#">Register</a></li>
                             </ul>
-                        </div>
+                        </div> --> 
                     </div>
                 </div>
             </div>
@@ -123,13 +122,13 @@ $result = $conn->query($sql);
                                             <li><a href="custom_clearence.html">Custom clearance</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="certifications.html">Certifications</a></li>
+                                    <li><a href="certifications.php">Certifications</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="blog-fullwidth.html">Blog</a>
+                                    <li><a href="blog-fullwidth.php">Blog</a>
                                         <!-- <ul class="submenu">
                                             <li><a href="blog.html">Blog with right sidebar</a></li>
                                             <li><a href="blog-right.html">Blog with Left sidebar</a></li>
-                                            <li><a href="blog-fullwidth.html">Blog full width</a></li>
+                                            <li><a href="blog-fullwidth.php">Blog full width</a></li>
                                             <li><a href="blog-details.html">Blog single right sidebar</a></li>
                                             <li><a href="blog-details-right.html">Blog single left sidebar</a></li>
                                             <li><a href="blog-details-fullwidth.html">Blog single fullwidth</a></li>
@@ -166,7 +165,7 @@ $result = $conn->query($sql);
 </header>
     <!-- header-area end -->
     <!-- .breadcumb-area start -->
-    <div class="breadcumb-area" style="background: url(/assets/images/about/air.png) no-repeat center / cover;">
+    <div class="breadcumb-area" style="background: url(assets/images/about/bg4.png) no-repeat center / cover;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -189,12 +188,12 @@ $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()) {             
                         echo '<div class="container">';
                         echo '<div>" . "<h2 style="text-align: center;">'.$row["title"]. '</h2></div>';
-                        echo "<img src='uploads/" . $row["image"] . "' class='rounded mx-auto d-block'>";
+                        echo "<img src='admin/uploads/" . $row["image"] . "' class='rounded mx-auto d-block'>";
                         echo '</div>';
                         
                     }
                     } else {
-                    echo "No blog posts found.";
+                    echo "No Certificates found.";
                 }
                 $conn->close();
                 ?>
@@ -247,8 +246,8 @@ $result = $conn->query($sql);
                         
                         <div class="social">
                             <ul class="d-flex">
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=61566858144347"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.instagram.com/jafferyislandcoastlinks?igsh=MThuYWMxeWU0Z3g2aQ%3D%3D&utm_source=qr"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
@@ -261,8 +260,8 @@ $result = $conn->query($sql);
                                 <li><a href="about.html">About Us</a></li>
                                 <li><a href="service.html">Service</a></li>
                                 <li><a href="contact.html">Contact</a></li>
-                                <li><a href="pricing.html">Pricing Table</a></li>
-                                <li><a href="certifications.html">Certifications</a></li>
+                                <!-- <li><a href="pricing.html">Pricing Table</a></li> -->
+                                <li><a href="certifications.php">Certifications</a></li>
                                 
                             </ul>
                         </div>
@@ -283,7 +282,7 @@ $result = $conn->query($sql);
                             <h3>Contact Us</h3>
                             <ul>
                                 <li><a href="index.html"></i>Tel: +254741733734 | +256743694014</a></li><br>
-                                <li><a href="index.html">Email: info@jafferyisland.co.ke</a></li><br>
+                                <li><a href="mailto:info@jafferyislandcoastlinks.com">Email: info@jafferyislandcoastlinks.com</a></li><br>
                                 <li><a href="index.html">Location: 2544 Kilindini Mombasa, Kenya</a></li>
                             </ul>
                         </div>

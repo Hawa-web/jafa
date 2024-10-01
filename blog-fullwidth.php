@@ -1,5 +1,5 @@
 <?php
-    include 'conn.php';
+    include 'blog-conn.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,20 +58,20 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-12 col-lg-6">
                     <div class="row">
-                        <div class="col-lg-7 col-md-6">
+                         <div class="col-lg-7 col-md-6">
                             <ul class="d-flex header-social">
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=61566858144347"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.instagram.com/jafferyislandcoastlinks?igsh=MThuYWMxeWU0Z3g2aQ%3D%3D&utm_source=qr"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-5 col-md-6">
+                       <!-- <div class="col-lg-5 col-md-6">
                             <ul class="login-r">
                                 <li><a href="#">Login</a></li>
                                 <li><a href="#">Register</a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                     <ul class="d-flex account_login-area">
                         <li class="account-item">
                            <img src="assets/images/icon/call.svg" alt="">
-                            <h5><span>Call Us Now</span>+254728946855 | +254741733734</h5>
+                            <h5><span>Call Us Now</span>+256743694014 | +254741733734</h5>
                         </li>
                         <li class="account-item account-item-2">
                            <img src="assets/images/icon/message.svg" alt="">
@@ -131,13 +131,13 @@
                                             <li><a href="custom_clearence.html">Custom clearance</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="certifications.html">Certifications</a></li>
+                                    <li><a href="certifications.php">Certifications</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li  class="active"><a href="blog-fullwidth.html">Blog</a>
+                                    <li  class="active"><a href="blog-fullwidth.php">Blog</a>
                                        <!--  <ul class="submenu">
                                             <li><a href="blog.html">Blog with right sidebar</a></li>
                                             <li><a href="blog-right.html">Blog with Left sidebar</a></li>
-                                            <li><a href="blog-fullwidth.html">Blog full width</a></li>
+                                            <li><a href="blog-fullwidth.php">Blog full width</a></li>
                                             <li><a href="blog-details.html">Blog single right sidebar</a></li>
                                             <li><a href="blog-details-right.html">Blog single left sidebar</a></li>
                                             <li><a href="blog-details-fullwidth.html">Blog single fullwidth</a></li>
@@ -203,7 +203,7 @@
                         echo '<div class="blog-item">';
                            echo'<div class="blog-img">';
                                echo'<div class="blog-s2">';
-                                   echo "<img src='uploads/". $row["image"]." '>";
+                                   echo "<img src='admin/uploads/". $row["image"]." '>";
                                echo'</div>';
                                 echo'<ul class="post-meta">';
                                     
@@ -289,8 +289,8 @@
                         
                         <div class="social">
                             <ul class="d-flex">
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=61566858144347"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.instagram.com/jafferyislandcoastlinks?igsh=MThuYWMxeWU0Z3g2aQ%3D%3D&utm_source=qr"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
@@ -303,8 +303,8 @@
                                 <li><a href="about.html">About Us</a></li>
                                 <li><a href="service.html">Service</a></li>
                                 <li><a href="contact.html">Contact</a></li>
-                                <li><a href="pricing.html">Pricing Table</a></li>
-                                <li><a href="certifications.html">Certifications</a></li>
+                                <!-- <li><a href="pricing.html">Pricing Table</a></li> -->
+                                <li><a href="certifications.php">Certifications</a></li>
                                 
                             </ul>
                         </div>
@@ -325,7 +325,7 @@
                             <h3>Contact Us</h3>
                             <ul>
                                 <li><a href="index.html"></i>Tel: +254741733734 | +256743694014</a></li><br>
-                                <li><a href="index.html">Email: info@jafferyisland.co.ke</a></li><br>
+                                <li><a href="mailto:info@jafferyislandcoastlinks.com">Email: info@jafferyislandcoastlinks.com</a></li><br>
                                 <li><a href="index.html">Location: 2544 Kilindini Mombasa, Kenya</a></li>
                             </ul>
                         </div>
